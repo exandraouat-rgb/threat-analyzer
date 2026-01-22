@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+python-multipart
+chromadb
+sentence-transformers
+pandas
+pypdf
+python-dotenv
+anthropic
+requests
+langchain
+langchain-anthropic
+sqlalchemy
+pymysql
+bcrypt

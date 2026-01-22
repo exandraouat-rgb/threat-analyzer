@@ -12,10 +12,17 @@ def build_vector_db(csv_path: str):
 
     for i, row in df.iterrows():
         text = f"""
-Menace: {row.get('menace', '')}
-Description: {row.get('description', '')}
+Architecture: {row.get('architecture_description', '')}
+Type de menace: {row.get('threat_type', '')}
+Gravité: {row.get('severity', '')}
+Description: {row.get('threat_description', '')}
 Impact: {row.get('impact', '')}
-Solution: {row.get('solution', '')}
+Vecteur d'attaque: {row.get('attack_vector', '')}
+Recommandation de mitigation: {row.get('mitigation_recommendation', '')}
+CWE ID: {row.get('cwe_id', '')}
+CVSS Score: {row.get('cvss_score', '')}
+MITRE ATT&CK: {row.get('mitre_attack_id', '')}
+OWASP Category: {row.get('owasp_category', '')}
 """
         embedding = model.encode(text).tolist()
 

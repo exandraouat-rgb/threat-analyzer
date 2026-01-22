@@ -26,11 +26,20 @@ def adapt_for_dashboard(project_name: str, analysis: dict, score_risque: dict) -
         {
             "nom": m.get("nom"),
             "gravite": m.get("gravite"),
-            "description": m.get("description")
+            "description": m.get("description"),
+            "recommandations": m.get("recommandations", []),
+            "cwe_id": m.get("cwe_id", "N/A"),
+            "cvss_score": m.get("cvss_score", "N/A"),
+            "mitre_attack_id": m.get("mitre_attack_id", "N/A"),
+            "owasp_category": m.get("owasp_category", "N/A"),
+            "score_confiance": m.get("score_confiance", 0.8)
         }
         for m in menaces
         if m.get("gravite") in ["Critique", "Élevée"]
     ]
+    
+    # Compter le total de recommandations
+    total_recommandations = sum(len(m.get("recommandations", [])) for m in menaces)
 
     return {
         "resume": {
@@ -42,7 +51,8 @@ def adapt_for_dashboard(project_name: str, analysis: dict, score_risque: dict) -
         },
         "statistiques": {
             "total_menaces": len(menaces),
-            "par_gravite": gravite_count
+            "par_gravite": gravite_count,
+            "total_recommandations": total_recommandations
         },
         "repartition_gravite": repartition_gravite,
         "menaces_cles": menaces_cles

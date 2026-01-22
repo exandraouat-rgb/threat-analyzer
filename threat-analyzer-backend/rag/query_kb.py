@@ -2,7 +2,7 @@ from sentence_transformers import SentenceTransformer
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-def search_threats(collection, query: str, k=5):
+def search_threats(collection, query: str, k=10):
     query_embedding = model.encode(query).tolist()
 
     results = collection.query(

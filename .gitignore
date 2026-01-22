@@ -3,6 +3,9 @@ __pycache__/
 *.pyc
 *.pyo
 .env
+*.db
+*.sqlite
+*.sqlite3
 
 # Node/React
 node_modules/
@@ -12,3 +15,13 @@ dist/
 # VS Code
 .vscode/
 *.code-workspace
+
+# Base de données et rapports générés
+threat-analyzer-backend/analyses.db
+threat-analyzer-backend/reports/*.pdf
+!threat-analyzer-backend/reports/.gitkeep
+
+# Fichiers temporaires
+*.lock
+.DS_Store
+Thumbs.db
